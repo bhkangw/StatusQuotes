@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Quotes</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .red {
+            color: rgb(212, 41, 55);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <p class="pull-right"><a href="/quotes">Dashboard</a> | <a href="/logout">Logout</a></p>
+    <div class="jumbotron">
+    <h1>Posts by {{user.first_name}}</h1>
+    <h2>Count: {{count}}</h2><br><br>
+    {% for i in all %}
+    <p><span class="red">{{i.author}}:</span> {{i.quote}}</p><br>
+    {% endfor %}
+    </div></div>
+</body>
+</html>

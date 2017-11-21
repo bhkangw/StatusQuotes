@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .red {
+            color: rgb(212, 41, 55);
+        }
+        .small{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <a href="/logout" class="pull-right">Logout</a>
+    <div class="jumbotron"><h1>Welcome {{request.session.user_name}}!</h1></div>
+    <div class="col-md-6">
+    <div class="jumbotron">
+    <h2>Quotable Quotes</h2>
+    {% for i in all %}
+    <p>{{i.author}}: {{i.quote}}</p>
+    <p class="small">Posted by <a href="/users/{{i.user.id}}">{{i.user.first_name}}</a></p>
+    <a class="btn-success btn-sm" href="/quotes/addfav/{{i.id}}" method="POST">Add to My List</a><br><br><br>
+    {% endfor %}
+    </div></div>
+    <div class="col-md-6">
+    <div class="jumbotron">
+    <h2>Your Favorites</h2>
+    {% for i in fav %}
+    <p>{{i.author}}: {{i.quote}}</p>
+    <p class="small">Posted by <a href="/users/{{i.user.id}}">{{i.user.first_name}}</a></p>
+    <a class="btn-danger btn-sm" href="/quotes/removefav/{{i.id}}" method="POST">Remove From My List</a><br><br><br>
+    {% endfor %}
+    </div></div>
+    <div>
+    <div class="jumbotron">
+    <h2>Contribute a Quote:</h2>
+    <form action="/quotes/add" method="POST">{% csrf_token %}
+        <p>Quoted By: <input size="29" type="text" name="author" id=""></p>
+        <p>Message: <br><textarea name="quote" cols="40" rows="3"></textarea></p>
+        <input class="btn-primary btn" type="submit" value="Submit">
+    </form>
+    {% for message in messages %}
+    <li class="red">{{ message }}</li>
+    <br> {% endfor %}
+    </div></div></div>
+</body>
+</html>
