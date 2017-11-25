@@ -1,5 +1,5 @@
 # pybelt
-Django Interactive Quote Wall App built from scratch in 4.5 hours for Python exam. Received a score of 10.0/10.0
+Django Interactive Quote Wall CRUD App built from scratch in 4.5 hours for Python exam. Received a score of 10.0/10.0
 
 Users can register an account and log in with existing credentials. 
 
